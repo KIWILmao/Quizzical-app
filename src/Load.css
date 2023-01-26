@@ -1,0 +1,35 @@
+body{
+    /* background-color: #dde8ff; */
+    
+    margin: 0;
+    font-family: 'karla','san-serif';
+    
+}
+
+.first{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+h1{
+    color: #293264;
+    margin-bottom: 0;
+}
+
+p{
+    color: #293264;
+    margin-bottom: 30px;
+}
+
+button{
+    width: 193px;
+    height: 52px;   
+    font-family:inter,'san-serif';
+    color: #F5F7FB;
+    background: #4D5B9E;
+    border-radius: 15px;
+    border: none;
+}
+
+
