@@ -1,7 +1,6 @@
 import React from "react"
 import './Load.css'
 
-
 export default function Load(props){
     return(
         <div className="first">
