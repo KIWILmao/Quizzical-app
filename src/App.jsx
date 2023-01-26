@@ -20,6 +20,7 @@ export default function App() {
     }
     return array;
   }
+
   function decode(html) {
     const txt = document.createElement("textarea");
     txt.innerHTML = html;
@@ -30,10 +31,22 @@ export default function App() {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then(res => res.json())
       .then(data => {
-        setAlldata(data.results)
+        data.results.map((item) => {
+          const question = decode(item.question)
+          const answer = decode(item.correct_answer)
+          const incorrect_answers = item.incorrect_answers.map(item => decode(item))
+          const options = shuffleArray([answer,...incorrect_answers])
+          const mainData = {
+            question:question,
+            answer:answer,
+            options:options
+          }
+        })
       })
     },[])
-    
+
+  
+
   const questionComps = alldata.map((item,index) => <Question key={index}question={decode(item.question)}/>)
 
   return (
