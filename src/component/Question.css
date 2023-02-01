@@ -2,6 +2,10 @@ body{
     margin: 5px;
 }
 
+h4{
+    color: #293264;
+}
+
 .options{
     display: flex;
     justify-content: space-around;
@@ -23,5 +27,9 @@ body{
 
 .options > div:hover{
     cursor: pointer;
+}
+
+.select{
+    background-color: aquamarine;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import Question from './Question'
-import Load from './Load'
+import Question from './component/Question'
+import Load from './component/Load'
 import './App.css'
 
 export default function App() {
@@ -39,20 +39,34 @@ export default function App() {
           return{
             question:question,
             answer:answer,
-            options:options
+            options:options,
+            isSelect : false
           }
         }) 
         setAlldata(mainData)
       })
     },[])
 
-  console.log(alldata)
+  function handleClick(){
+    setAlldata(prevAlldata => {
+      return{
+      ...prevAlldata,
+      isSelect : false}
+    })
+  }
   
-  const questionComps = alldata.map((item,index) => <Question 
-    key={index}
-    question={item.question}
-    options={item.options}
-    />)
+  const questionComps = alldata.map((item,index) =>{
+    return(
+      <Question 
+      key={index}
+      question={item.question}
+      options={item.options}
+      handleClick={handleClick}
+      /> 
+    )
+  })
+
+  // console.log(alldata)
 
   return (
     <div>
