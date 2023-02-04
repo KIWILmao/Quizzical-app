@@ -31,42 +31,84 @@ export default function App() {
     fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then(res => res.json())
       .then(data => {
-        const mainData = data.results.map((item) => {
+        const mainData = data.results.map((item,index) => {
           const question = decode(item.question)
-          const answer = decode(item.correct_answer)
-          const incorrect_answers = item.incorrect_answers.map(item => decode(item))
-          const options = shuffleArray([answer,...incorrect_answers])
+          const answer ={
+            id:0,
+            mcq:decode(item.correct_answer),
+            isSelected:false
+          }
+          const incorrect_answers = item.incorrect_answers.map((x,index) => {
+            return{
+              id:index+1,
+              mcq:decode(x),
+              isSelected:false
+            }
+          })
+          const options = [answer,...incorrect_answers]
           return{
+            id:index,
             question:question,
             answer:answer,
-            options:options,
-            isSelect : false
+            options:options
           }
         }) 
         setAlldata(mainData)
       })
     },[])
 
-  function handleClick(){
-    setAlldata(prevAlldata => {
-      return{
-      ...prevAlldata,
-      isSelect : false}
-    })
-  }
-  
+    
+    
+    
+    
+    function handleSelect(id){
+      setAlldata(prevAlldata => {
+        const newArr = []
+        for (let i = 0; i < prevAlldata.length; i++) {
+          const currentData = prevAlldata[i]
+          if(currentData.id == id){
+            const newMcq = []
+            for(let j =0; j<currentData.options.length; j++){
+              if(currentData.options[j].id == id ){
+                const updatedObj = {
+                  ...currentData.options[j],
+                  isSelected: true
+                }
+                newMcq.push(updatedObj)
+              }
+              else{
+                const updatedObj = {
+                  ...currentData.options[j],
+                  isSelected: false
+                }
+                newMcq.push(updatedObj)
+              }
+            }
+            newArr.push(currentData)
+          }
+          else{
+            newArr.push(currentData)   
+          }
+        }
+        return newArr
+      })
+    }
+    // console.log(alldata)
+    console.log(alldata)
+    
   const questionComps = alldata.map((item,index) =>{
     return(
       <Question 
+      id={index}
+      handleSelect={handleSelect}
       key={index}
       question={item.question}
       options={item.options}
-      handleClick={handleClick}
-      /> 
-    )
+      // handleClick={handleClick}
+      />
+      )
   })
 
-  // console.log(alldata)
 
   return (
     <div>
