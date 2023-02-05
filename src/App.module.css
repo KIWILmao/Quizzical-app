@@ -1,0 +1,61 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: url('/public/intro-page.png'); 
+    background-size: 1100px 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'karla','san-serif';
+    margin: 0;
+}
+
+.load{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+}
+
+.main{
+    width: 900px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;;
+}
+
+.answer{
+    width: 193px;
+    height: 52px;   
+    font-family:inter,'san-serif';
+    color: #F5F7FB;
+    background: #4D5B9E;
+    border-radius: 15px;
+    border: none;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 600;
+}
+
+.result{
+    margin: 0;
+    display: flex;
+}
+
+.result > p{
+    margin-right: 20px;
+}

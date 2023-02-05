@@ -1,10 +1,10 @@
 body{
     /* background-color: #dde8ff; */
-    
     margin: 0;
     font-family: 'karla','san-serif';
-    
 }
+
+
 
 .first{
     display: flex;
@@ -22,7 +22,7 @@ p{
     margin-bottom: 30px;
 }
 
-button{
+.start{
     width: 193px;
     height: 52px;   
     font-family:inter,'san-serif';
